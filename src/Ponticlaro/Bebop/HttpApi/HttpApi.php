@@ -24,8 +24,9 @@ class HttpApi {
 	 * Instantiates new Api
 	 * 
 	 * @param string $rewrite_tag Rewrite Tag. Must not match any WordPress built-in query vars
+	 * @param string $base_url    Base URL for all API resources
 	 */
-	public function __construct($rewrite_tag)
+	public function __construct($rewrite_tag, $base_url)
 	{
 		// Initialize Config
 		$this->config = new Collection;
@@ -34,9 +35,14 @@ class HttpApi {
 		$this->router = new Router;
 
 		if (!$rewrite_tag)
-			throw new \Exception("Api: rewrite_tag must be a string");
+			throw new \Exception("HttpApi: rewrite_tag must be a string");
 
 		$this->setRewriteTag($rewrite_tag);
+
+		if (!$base_url)
+			throw new \Exception("HttpApi: base_url must be a string");
+
+		$this->setBaseUrl($base_url);
 
 		// Register stuff on the init hook
 		add_action('init', array($this, '__initRegister'), 1);
