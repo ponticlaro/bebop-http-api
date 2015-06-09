@@ -1,6 +1,6 @@
 <?php
 
-namespace Ponticlaro\Bebop\HttpApi;
+namespace Ponticlaro\Bebop;
 
 use Ponticlaro\Bebop\Common\Collection;
 
@@ -128,7 +128,7 @@ class HttpApi {
 	/**
 	 * Returns Routes Manager instance
 	 *
-	 * @return Ponticlaro\WordPress\CloudMedia\Api\Routes Api Routes Manager
+	 * @return Ponticlaro\Bebop\HttpApi\Routes Api Routes Manager
 	 */
 	public function routes()
 	{
@@ -182,7 +182,7 @@ class HttpApi {
      * 
      * @param  string                      $path     Route path
      * @param  string                      $callable Route function
-     * @return Ponticlaro\WordPress\CloudMedia\Api\Routes           This class instance
+     * @return Ponticlaro\Bebop\HttpApi\Routes           This class instance
      */
     public function get($path, $callable)
     {
@@ -196,7 +196,7 @@ class HttpApi {
      * 
      * @param  string                      $path     Route path
      * @param  string                      $callable Route function
-     * @return Ponticlaro\WordPress\CloudMedia\Api\Routes           This class instance
+     * @return Ponticlaro\Bebop\HttpApi\Routes           This class instance
      */
     public function post($path, $callable)
     {
@@ -210,7 +210,7 @@ class HttpApi {
      * 
      * @param  string                      $path     Route path
      * @param  string                      $callable Route function
-     * @return Ponticlaro\WordPress\CloudMedia\Api\Routes           This class instance
+     * @return Ponticlaro\Bebop\HttpApi\Routes           This class instance
      */
     public function put($path, $callable)
     {
@@ -224,7 +224,7 @@ class HttpApi {
      * 
      * @param  string                      $path     Route path
      * @param  string                      $callable Route function
-     * @return Ponticlaro\WordPress\CloudMedia\Api\Routes           This class instance
+     * @return Ponticlaro\Bebop\HttpApi\Routes           This class instance
      */
     public function patch($path, $callable)
     {
@@ -238,7 +238,7 @@ class HttpApi {
      * 
      * @param  string                      $path     Route path
      * @param  string                      $callable Route function
-     * @return Ponticlaro\WordPress\CloudMedia\Api\Routes           This class instance
+     * @return Ponticlaro\Bebop\HttpApi\Routes           This class instance
      */
     public function delete($path, $callable)
     {
@@ -252,7 +252,7 @@ class HttpApi {
      * 
      * @param  string                      $path     Route path
      * @param  string                      $callable Route function
-     * @return Ponticlaro\WordPress\CloudMedia\Api\Routes           This class instance
+     * @return Ponticlaro\Bebop\HttpApi\Routes           This class instance
      */
     public function options($path, $callable)
     {
