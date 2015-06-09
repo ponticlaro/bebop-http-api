@@ -3,6 +3,7 @@
 namespace Ponticlaro\Bebop;
 
 use Ponticlaro\Bebop\Common\Collection;
+use Ponticlaro\Bebop\HttpApi\Router;
 
 class HttpApi {
 
