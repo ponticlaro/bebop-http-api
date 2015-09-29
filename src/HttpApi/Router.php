@@ -3,6 +3,7 @@
 namespace Ponticlaro\Bebop\HttpApi;
 
 use Ponticlaro\Bebop\Common\Collection;
+use Ponticlaro\Bebop\Common\Utils;
 use Ponticlaro\Bebop\HttpApi\Exceptions\BaseException;
 
 class Router {
@@ -132,7 +133,7 @@ class Router {
                         throw new \UnexpectedValueException("You need to send the Content-type header with 'application/json' as its value", 1);
                     
                     // Validate request body as JSON string
-                    if (!Bebop::util('isJson', $request_body))
+                    if (!Utils::isJson($request_body))
                         throw new BaseException("Request body must be a valid JSON string", 400);
 
                     // Get Raw body as $input
