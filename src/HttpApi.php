@@ -4,6 +4,8 @@ namespace Ponticlaro\Bebop;
 
 use Ponticlaro\Bebop\Common\Collection;
 use Ponticlaro\Bebop\HttpApi\Router;
+use Ponticlaro\Bebop\HttpApi\Swagger;
+use Ponticlaro\Bebop\HttpApi\Swagger\Tag as SwaggerTag;
 
 class HttpApi {
 
@@ -20,6 +22,13 @@ class HttpApi {
 	 * @var Ponticlaro\Bebop\HttpApi\Router
 	 */
 	protected $router;
+
+  /**
+   * Swagger configuration
+   * 
+   * @var Ponticlaro\Bebop\HttpApi\Swagger
+   */
+  protected $swagger;
 
 	/**
 	 * Instantiates new Api
@@ -53,6 +62,25 @@ class HttpApi {
 
 		// Handle template includes
 		add_action('template_redirect', array($this, '__templateRedirects'), 1);
+
+    // Initialize Swagger
+    $this->swagger = new Swagger;
+    $this->swagger->setInfo( 'Title', 'Bebop HTTP API' );
+    $this->swagger->setHost( $_SERVER['SERVER_NAME'] );
+    $this->swagger->setBasePath( '/'. trim( $base_url, '/' ) );
+    $this->swagger->addConsumedMimeType( 'application/json' );
+    $this->swagger->addProducedMimeType( 'application/json' );
+
+    $httpApiTag = new SwaggerTag( 'bebop-http-api' );
+    $httpApiTag->setDescription( 'HTTP API for WordPress' );
+    $httpApiTag->setExternalDocs( 'https://github.com/ponticlaro/bebop-http-api' );
+
+    $this->swagger->addTag( $httpApiTag );
+
+    // Add swagger route
+    $this->__addRoute('get', 'swagger.json', function() {
+      return $this->swagger->getSpec();
+    });
 	}
 
 	/**
@@ -297,4 +325,14 @@ class HttpApi {
 
 		return $this;
 	}
+
+  /**
+   * Returns Swagger specification object
+   * 
+   * @return Ponticlaro\Bebop\HttpApi\Swagger
+   */
+  public function getSwagger()
+  {
+    return $this->swagger;
+  }
 }
