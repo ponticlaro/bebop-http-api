@@ -16,8 +16,8 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0",
-    "slim/slim": "^2",
+    "php": ">=7.4",
+    "slim/slim": "^4.0",
     "ponticlaro/bebop-common": "^1"
   },
   "require-dev": {
